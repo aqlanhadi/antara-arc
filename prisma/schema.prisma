@@ -7,7 +7,7 @@ datasource db {
   provider          = "postgresql"
   url               = env("POSTGRES_PRISMA_URL")
   directUrl         = env("POSTGRES_URL_NON_POOLING")
-  shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING")
+  // shadowDatabaseUrl = env("POSTGRES_URL_NON_POOLING")
 }
 
 model Account {
@@ -41,7 +41,10 @@ model Session {
 
 model User {
   id            String    @id @default(cuid())
+  username      String?   @unique
+  password      String?
   name          String?
+  p_name        String?
   email         String?   @unique
   emailVerified DateTime?
   image         String?

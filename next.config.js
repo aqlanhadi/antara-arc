@@ -9,10 +9,16 @@ const nextConfig = {
     return [
       {
         source: "/github",
-        destination: "https://github.com/steven-tey/precedent",
+        destination: "https://github.com/aqlanhadi/antara",
         permanent: false,
       },
     ];
+  },
+  experimental: {
+    serverActions: true,
+  },
+  images: {
+    domains: ["robohash.org", "lh3.googleusercontent.com", "vercel.com"],
   },
 };
 

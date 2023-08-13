@@ -13,7 +13,7 @@ export default function NavBar({ session }: { session: Session | null }) {
 
   return (
     <>
-      <SignInModal />
+      {/* <SignInModal /> */}
       <div
         className={`fixed top-0 w-full flex justify-center ${
           scrolled
