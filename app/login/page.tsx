@@ -16,7 +16,7 @@ function Login() {
   const passwordMatchCheck = (password: string, reenterPassword: string): Boolean => (password === reenterPassword)
 
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault()
 
     try {

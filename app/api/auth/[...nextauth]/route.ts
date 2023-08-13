@@ -23,7 +23,7 @@ export const authOptions: NextAuthOptions = {
         username: { label: "Username", type: "text", placeholder: "jsmith" },
         password: { label: "Password", type: "password" }
       },
-      async authorize(credentials) {
+      async authorize(credentials: any) {
         // Add logic here to look up the user from the credentials supplied
         // const user = { id: "1", name: "J Smith", email: "jsmith@example.com" }
         // console.log(credentials)
@@ -40,7 +40,7 @@ export const authOptions: NextAuthOptions = {
           
           if (!user) return null
           
-          const passwordMatch = await bcrypt.compare(password, user.password);
+          const passwordMatch = await bcrypt.compare(password, user?.password || '');
 
           if (!passwordMatch) return null;
 

@@ -29,7 +29,7 @@ function SignUp() {
 
   // }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e:any) => {
     e.preventDefault()
     try {
       const res = await fetch('/api/register', {
@@ -77,7 +77,7 @@ function SignUp() {
                   passwordMatch === null ? <></>
                   : passwordMatch
                   ? <></>
-                  : <p className='text-right text-xs text-red-700'>Password don't match</p>
+                  : <p className='text-right text-xs text-red-700'>Password don&apos;t match</p>
                 }
               </>
 
