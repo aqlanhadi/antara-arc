@@ -22,7 +22,7 @@ export function UserSetPasswordForm({ className, ...props }: UserSetPasswordForm
   const email = searchParams.get('email')
   const passwordMatchCheck = (password: string, reenterPassword: string): Boolean => (password === reenterPassword)
 
-  const onSubmit = async (event: React.SyntheticEvent) => {
+  const onSubmit = async (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault()
 
     let password = event.target.password?.value

@@ -21,7 +21,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
   const [error, setError] = React.useState<string | null>(null)
 
-  async function onSubmit(event: React.SyntheticEvent) {
+  async function onSubmit(event: React.ChangeEvent<HTMLFormElement>) {
     event.preventDefault()
     let email = event.target.email?.value
     if (!email) {

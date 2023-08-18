@@ -22,14 +22,9 @@ export function UserLoginForm({ className, ...props }: UserLoginFormProps) {
     if (error === 'CredentialsSignin') {
       setErrorMessage('Invalid email or password')
     }
-  })
-  // const error = searchParams.get('error')
-  // if (error === 'CredentialsSignin') {
-  //   // console.log('error')
-  //   setErrorMessage('Invalid email or password')
-  // }
+  }, [searchParams])
 
-  async function onSubmit(event: React.SyntheticEvent) {
+  async function onSubmit(event: React.ChangeEvent<HTMLFormElement>) {
     event.preventDefault()
     setIsLoading(true)
     let email = event.target.email?.value
@@ -42,7 +37,7 @@ export function UserLoginForm({ className, ...props }: UserLoginFormProps) {
     })
 
     // clear the form
-    if (authorize.ok) {
+    if (authorize?.ok) {
       event.target.reset()
     }
 
