@@ -6,8 +6,14 @@ import { Input } from "@/components/ui/input"
 import { Button } from '@/components/ui/button'
 import { signIn } from "next-auth/react";
 import { useRouter, redirect } from 'next/navigation'
+import { Metadata } from "next"
+import Image from "next/image"
+import Link from "next/link"
+import { buttonVariants } from '@/components/ui/button'
+import { UserAuthForm } from '@/app/auth/(components)/user-register-form'
+import { cn } from '@/lib/utils'
 
-function SignUp() {
+function Onboard() {
 
   const router = useRouter()
   const [email, setEmail] = React.useState('')
@@ -41,9 +47,9 @@ function SignUp() {
       if (res.ok) {
 
         await signIn('credentials', {
-          email,
+          username: email,
           password,
-          callbackUrl: '/home',
+          callbackUrl: '/',
         })
         
         // redirect('/home')
@@ -55,6 +61,39 @@ function SignUp() {
       console.error(error)
     }
   }
+
+  return (
+    <div className="lg:p-8">
+      <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+        <div className="flex flex-col space-y-2 text-center">
+          <h1 className="text-2xl font-semibold tracking-tight">
+            Welcome to Antara!
+          </h1>
+          <p className="text-sm text-muted-foreground">
+            We just need a couple more details and we&apos;ll get you started!
+          </p>
+        </div>
+        <UserAuthForm />
+        <p className="px-8 text-center text-sm text-muted-foreground">
+          By clicking continue, you agree to our{" "}
+          <Link
+            href="/terms"
+            className="underline underline-offset-4 hover:text-primary"
+          >
+            Terms of Service
+          </Link>{" "}
+          and{" "}
+          <Link
+            href="/privacy"
+            className="underline underline-offset-4 hover:text-primary"
+          >
+            Privacy Policy
+          </Link>
+          .
+        </p>
+      </div>
+    </div>
+  )
 
   return (
     <div className='flex h-screen'>
@@ -106,4 +145,4 @@ function SignUp() {
   )
 }
 
-export default SignUp
+export default Onboard
