@@ -1,17 +1,13 @@
 'use client'
 
 import React from 'react'
-import { Mail, Facebook } from "lucide-react"
+import { Mail } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from '@/components/ui/button'
-import { signIn } from "next-auth/react";
-import { useRouter, redirect } from 'next/navigation'
-import { Metadata } from "next"
-import Image from "next/image"
+import { signIn } from "next-auth/react"
+import { useRouter } from 'next/navigation'
 import Link from "next/link"
-import { buttonVariants } from '@/components/ui/button'
-import { UserAuthForm } from '@/app/auth/(components)/user-register-form'
-import { cn } from '@/lib/utils'
+import { UserOnboardingForm } from '@/app/auth/(components)/user-onboarding-form'
 
 function Onboard() {
 
@@ -73,7 +69,7 @@ function Onboard() {
             We just need a couple more details and we&apos;ll get you started!
           </p>
         </div>
-        <UserAuthForm />
+        <UserOnboardingForm />
         <p className="px-8 text-center text-sm text-muted-foreground">
           By clicking continue, you agree to our{" "}
           <Link

@@ -11,9 +11,9 @@ import { signIn } from "next-auth/react"
 import { useSearchParams, useRouter } from "next/navigation"
 import Link from "next/link"
 
-interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface UserRegisterFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
-export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
+export function UserRegisterForm({ className, ...props }: UserRegisterFormProps) {
   const searchParams = useSearchParams()
   const router = useRouter()
   const currentURL = new URLSearchParams(Array.from(searchParams.entries()));
@@ -118,22 +118,22 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       </div>
     </div>
     <p className="px-8 text-center text-sm text-muted-foreground">
-    By clicking continue, you agree to our{" "}
-    <Link
-      href="/terms"
-      className="underline underline-offset-4 hover:text-primary"
-    >
-      Terms of Service
-    </Link>{" "}
-    and{" "}
-    <Link
-      href="/privacy"
-      className="underline underline-offset-4 hover:text-primary"
-    >
-      Privacy Policy
-    </Link>
-    .
-  </p>
+      By clicking continue, you agree to our{" "}
+      <Link
+        href="/terms"
+        className="underline underline-offset-4 hover:text-primary"
+      >
+        Terms of Service
+      </Link>{" "}
+      and{" "}
+      <Link
+        href="/privacy"
+        className="underline underline-offset-4 hover:text-primary"
+      >
+        Privacy Policy
+      </Link>
+      .
+    </p>
   </>
   )
 }

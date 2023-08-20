@@ -14,6 +14,11 @@ interface UserOnboardingFromProps extends React.HTMLAttributes<HTMLDivElement> {
 export function UserOnboardingForm({ className, ...props }: UserOnboardingFromProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
 
+  const [name, setName] = React.useState<string>("")
+  const [partner, setPartner] = React.useState<string>("")
+  const [username, setUsername] = React.useState<string>("@")
+  const [disableUsernameField, setDisableUsernameField] = React.useState<boolean>(true)
+
   async function onSubmit(event: React.SyntheticEvent) {
     event.preventDefault()
     setIsLoading(true)
@@ -23,60 +28,79 @@ export function UserOnboardingForm({ className, ...props }: UserOnboardingFromPr
     }, 3000)
   }
 
+  React.useEffect(() => {
+    setUsername('@' + name.split(' ')[0] + partner.split(' ')[0])
+  }, [name, partner])
+
+  React.useEffect(() => {
+    if (username.length < 1 || username === '@') {
+      setDisableUsernameField(true)
+      setUsername('@')
+    } else {
+      setDisableUsernameField(false)
+    }
+  }, [username])
+
   return (
     <div className={cn("grid gap-6", className)} {...props}>
       <form onSubmit={onSubmit}>
         <div className="grid gap-2">
           <div className="grid gap-1">
-            <Label className="sr-only" htmlFor="email">
-              Email
-            </Label>
-            <Input
-              id="email"
-              placeholder="name@example.com"
-              type="email"
-              autoCapitalize="none"
-              autoComplete="email"
-              autoCorrect="off"
-              disabled={isLoading}
-            />
+            <div>
+              <Label className="text-muted-foreground" htmlFor="name">
+                Your Name
+              </Label>
+              <Input
+                id="name"
+                placeholder=""
+                type="text"
+                autoCapitalize="none"
+                autoComplete="name"
+                autoCorrect="off"
+                disabled={isLoading}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </div>
+            <div>
+              <Label className="text-muted-foreground" htmlFor="partner">
+                Partner&apos;s Name
+              </Label>
+              <Input
+                id="partner"
+                placeholder="Partner&apos;s name"
+                type="text"
+                autoCapitalize="none"
+                autoComplete="partner-name"
+                autoCorrect="off"
+                disabled={isLoading}
+                onChange={(e) => setPartner(e.target.value)}
+              />
+            </div>
+            <div>
+              <Label className="text-muted-foreground" htmlFor="username">Suggested username</Label>
+              <Input
+                id="username"
+                prefix="@"
+                placeholder="Partner&apos;s name"
+                value={username}
+                type="text"
+                autoCapitalize="none"
+                autoComplete="partner-name"
+                autoCorrect="off"
+                disabled={disableUsernameField || isLoading}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+            </div>
           </div>
+          
           <Button disabled={isLoading}>
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            Continue with Email
+            Lets go!
           </Button>
         </div>
       </form>
-      <div className="relative">
-        <div className="absolute inset-0 flex items-center">
-          <span className="w-full border-t" />
-        </div>
-        <div className="relative flex justify-center text-xs uppercase">
-          <span className="bg-background px-2 text-muted-foreground">
-            Or sign up with
-          </span>
-        </div>
-      </div>
-      <div className="flex flex-col gap-2">
-        <Button variant="outline" type="button" disabled={isLoading} onClick={() => signIn('facebook', { callbackUrl: '/' })}>
-            {isLoading ? (
-            <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-            ) : (
-            <Icons.gitHub className="mr-2 h-4 w-4" />
-            )}{" "}
-            Facebook
-        </Button>
-        <Button variant="outline" type="button" disabled={isLoading} onClick={() => signIn('google', { callbackUrl: '/' })}>
-            {isLoading ? (
-            <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-            ) : (
-            <Icons.google className="mr-2 h-4 w-4" />
-            )}{" "}
-            Google
-        </Button>
-      </div>
     </div>
   )
 }

@@ -1,7 +1,7 @@
 'use client'
 
-import { UserAuthForm } from '@/app/auth/(components)/user-register-form'
-import { UserSetPasswordForm } from '../(components)/user-set-password-form'
+import { UserRegisterForm } from '@/app/auth/(components)/user-register-form'
+import { UserSetPasswordForm } from '@/app/auth/(components)/user-set-password-form'
 import { useSearchParams } from 'next/navigation'
 
 function SignUp() {
@@ -14,7 +14,7 @@ function SignUp() {
         {
           email 
           ? <UserSetPasswordForm />
-          : <UserAuthForm />
+          : <UserRegisterForm />
         }
       </div>
     </div>

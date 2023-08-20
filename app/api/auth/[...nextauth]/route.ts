@@ -64,31 +64,20 @@ export const authOptions: NextAuthOptions = {
     strategy: "jwt",
   },
   secret: process.env.NEXTAUTH_SECRET,
-  // callbacks: {
-  //   session: ({ session, token }) => {
-  //     console.log("Session Callback", { session, token });
-  //     return {
-  //       ...session,
-  //       user: {
-  //         ...session.user,
-  //         id: token.id,
-  //         randomKey: token.randomKey,
-  //       },
-  //     };
-  //   },
-  //   jwt: ({ token, user }) => {
-  //     console.log("JWT Callback", { token, user });
-  //     if (user) {
-  //       const u = user as unknown as any;
-  //       return {
-  //         ...token,
-  //         id: u.id,
-  //         randomKey: u.randomKey,
-  //       };
-  //     }
-  //     return token;
-  //   },
-  // },
+  callbacks: {
+    jwt({ token, user }) {
+      if (user && "username" in user) {
+        token.username = user.username;
+        token.id = user.id;
+      }
+      return token;
+    },
+    session({ session, token }) {
+      session.user.username = token.username
+      session.user.id = token.id
+      return session
+    }
+  }
 };
 
 const handler = NextAuth(authOptions);
