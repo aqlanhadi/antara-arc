@@ -19,9 +19,15 @@ export function UserOnboardingForm({ className, ...props }: UserOnboardingFromPr
   const [username, setUsername] = React.useState<string>("@")
   const [disableUsernameField, setDisableUsernameField] = React.useState<boolean>(true)
 
-  async function onSubmit(event: React.SyntheticEvent) {
+  async function onSubmit(event: React.ChangeEvent<HTMLFormElement>) {
     event.preventDefault()
     setIsLoading(true)
+
+    const name = event.target.s_name?.value
+    const p_name = event.target.p_name?.value
+    const username = event.target.username?.value
+
+    console.log(name, p_name, username)
 
     setTimeout(() => {
       setIsLoading(false)
@@ -51,7 +57,7 @@ export function UserOnboardingForm({ className, ...props }: UserOnboardingFromPr
                 Your Name
               </Label>
               <Input
-                id="name"
+                id="s_name"
                 placeholder=""
                 type="text"
                 autoCapitalize="none"
@@ -66,8 +72,8 @@ export function UserOnboardingForm({ className, ...props }: UserOnboardingFromPr
                 Partner&apos;s Name
               </Label>
               <Input
-                id="partner"
-                placeholder="Partner&apos;s name"
+                id="p_name"
+                placeholder=""
                 type="text"
                 autoCapitalize="none"
                 autoComplete="partner-name"
@@ -81,7 +87,7 @@ export function UserOnboardingForm({ className, ...props }: UserOnboardingFromPr
               <Input
                 id="username"
                 prefix="@"
-                placeholder="Partner&apos;s name"
+                placeholder=""
                 value={username}
                 type="text"
                 autoCapitalize="none"

@@ -3,6 +3,7 @@
 import React from 'react'
 import Image from "next/image"
 import AntaraIcon from '@/public/icon.png'
+import Link from 'next/link'
 
 function AuthLayout({ children }: { children: React.ReactNode }) {
 
@@ -12,10 +13,12 @@ function AuthLayout({ children }: { children: React.ReactNode }) {
         {children}
         <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
           <div className="absolute inset-0 bg-zinc-900" />
-          <div className="relative z-20 flex items-center text-lg font-medium gap-2">
-            <Image src={AntaraIcon} width={24} height={24} alt='Antara Logo'/>
-            Antara
-          </div>
+          <Link href="/">
+            <div className="relative z-20 flex items-center text-lg font-medium gap-2">
+              <Image src={AntaraIcon} width={24} height={24} alt='Antara Logo'/>
+              Antara
+            </div>
+          </Link>
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-2">
               <p className="text-lg">

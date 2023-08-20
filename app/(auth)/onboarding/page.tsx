@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import { signIn } from "next-auth/react"
 import { useRouter } from 'next/navigation'
 import Link from "next/link"
-import { UserOnboardingForm } from '@/app/auth/(components)/user-onboarding-form'
+import { UserOnboardingForm } from '@/app/(auth)/(components)/user-onboarding-form'
 
 function Onboard() {
 

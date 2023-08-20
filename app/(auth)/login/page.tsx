@@ -62,6 +62,16 @@ function Login() {
           </Link>
           .
         </p>
+        <p className="px-8 text-center text-sm text-muted-foreground">
+          Don&apos;t have an account?{" "}
+          <Link
+            href="/register"
+            className="underline underline-offset-4 hover:text-primary"
+          >
+            Create an account
+          </Link>
+          .
+        </p>
       </div>
     </div>
   )

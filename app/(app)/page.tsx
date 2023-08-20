@@ -7,22 +7,11 @@ export default async function Home() {
 
   return (
     <>
-      <main
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "70vh",
-      }}
-    >
-      <div>
         <p>{JSON.stringify(session)}</p>
         <LoginButton />
         <RegisterButton />
         <LogoutButton />
         <ProfileButton />
-      </div>
-    </main>
     </>
   );
 }
