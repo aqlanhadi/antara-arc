@@ -7,9 +7,11 @@ import { Icons } from "@/components/icons"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { signIn } from "next-auth/react"
+import { redirect } from "next/navigation"
 
-interface UserOnboardingFromProps extends React.HTMLAttributes<HTMLDivElement> {}
+interface UserOnboardingFromProps extends React.HTMLAttributes<HTMLDivElement> {
+  user: string;
+}
 
 export function UserOnboardingForm({ className, ...props }: UserOnboardingFromProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false)
@@ -27,11 +29,28 @@ export function UserOnboardingForm({ className, ...props }: UserOnboardingFromPr
     const p_name = event.target.p_name?.value
     const username = event.target.username?.value
 
-    console.log(name, p_name, username)
+    console.log(props.user, name, p_name, username)
 
-    setTimeout(() => {
-      setIsLoading(false)
-    }, 3000)
+    // check this later https://www.youtube.com/watch?v=SFQwto0rvps
+
+    try {
+      const res = await fetch(`/api/user/update/${props.user}`, {
+        method: 'PUT',
+        body: JSON.stringify({
+          name,
+          p_name,
+          username,
+        }),
+      })
+
+      if (res.ok) {
+        // redirect to set password page
+        redirect('/feed')
+      }
+    } catch (e) {
+      console.error(e)
+    }
+    // setIsLoading(false)
   }
 
   React.useEffect(() => {
