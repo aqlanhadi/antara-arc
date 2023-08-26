@@ -18,7 +18,14 @@ const nextConfig = {
     serverActions: true,
   },
   images: {
-    domains: ["robohash.org", "lh3.googleusercontent.com", "vercel.com"],
+    domains: [
+      "robohash.org", 
+      "lh3.googleusercontent.com", 
+      "vercel.com",
+      "platform-lookaside.fbsbx.com",
+      "picsum.photos",
+      "flowbite.s3.amazonaws.com"
+    ],
   }
 };
 

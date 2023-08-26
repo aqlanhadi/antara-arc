@@ -5,12 +5,12 @@ import { Suspense } from 'react'
 function AppLayout
 ({ children }: { children: React.ReactNode }) {
   return (
-    <div className='flex flex-col'>
+    <div className='flex-col'>
         <Suspense fallback="...">
           {/* @ts-expect-error Server Component */}
           <Nav />
         </Suspense>
-        <div className='border h-full border-red-200'>{children}</div>
+        <div className='mt-16 h-full'>{children}</div>
         
     </div>
   )

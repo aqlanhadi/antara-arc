@@ -61,7 +61,7 @@ export function UserSetPasswordForm({ className, ...props }: UserSetPasswordForm
 
   return (
     <>
-    <div className="flex flex-col space-y-2 text-center">
+    <div className="flex-col space-y-2 text-center">
           <h1 className="text-2xl font-semibold tracking-tight">
             Set a password for {email}
           </h1>

@@ -15,7 +15,8 @@ export default async function RootLayout({
 
   const session = await getServerSession(authOptions);
 
-  if (!session?.user.username) redirect('/onboarding')
+  if (!session) return redirect('/login')
+  if (!session?.user.username) return redirect('/onboarding')
 
   return  ( 
     <>

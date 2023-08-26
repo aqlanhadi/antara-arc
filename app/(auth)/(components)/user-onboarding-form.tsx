@@ -41,12 +41,8 @@ export function UserOnboardingForm({ className, ...props }: UserOnboardingFromPr
           p_name,
           username,
         }),
-      })
+      }).then(() => redirect('/feed'))
 
-      if (res.ok) {
-        // redirect to set password page
-        redirect('/feed')
-      }
     } catch (e) {
       console.error(e)
     }
