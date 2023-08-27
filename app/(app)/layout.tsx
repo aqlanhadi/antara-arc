@@ -10,7 +10,7 @@ function AppLayout
           {/* @ts-expect-error Server Component */}
           <Nav />
         </Suspense>
-        <div className='mt-16 h-full'>{children}</div>
+        <div className='mt-16 h-full max-w-screen-xl m-auto'>{children}</div>
         
     </div>
   )

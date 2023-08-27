@@ -42,7 +42,7 @@ function MasonryFeed({ content }: { content: any[]}) {
                                 <p className='text-xs'>Married Aug 2022</p>
                             </div>
                         </div>
-                        <div className='flex gap-1.5'>
+                        <div className='flex gap-1.5 mt-3'>
                             {
                                 Array(5).fill(0).map((_, index) => (
                                     <p key={index} className='px-2 py-0.5 text-xs border rounded-full'>Tag {index}</p>
@@ -59,17 +59,17 @@ function MasonryFeed({ content }: { content: any[]}) {
                         content.map((item, index) => (
                             <div key={index} className={`flex-col items-center w-auto h-auto m-1 mb-2.5`} onClick={() => viewContent(item)}>
                                 <div className={`flex-col rounded-3xl ${item.promoted && 'bg-pink-100'}`}>
-                                    { item.promoted && <p className='mt-3 ml-4 mb-2'>Promoted</p> }
+                                    { item.promoted && <p className='pt-3 pl-4 pb-2'>Promoted</p> }
                                     <Image
                                         key={index}
                                         src={item.src}
                                         alt="Picture of the author"
                                         width={500}
                                         height={500}
-                                        className={`rounded-3xl hover ${item.promoted && 'scale-95'}`}
+                                        className={`rounded-3xl hover`}
                                     />
                                     <div className={`flex items-center gap-3 ${ item.promoted ? 'p-3' : 'py-3'}`}>
-                                        <div className='w-7 h-7 border bg-slate-200 rounded-full' />
+                                        <div className='w-7 h-7 bg-slate-200 rounded-full' />
                                         <p className='font-semibold'>Abby & Gail</p>
                                     </div>
                                 </div>

@@ -29,16 +29,16 @@ export default async function Home() {
         <LogoutButton />
         <ProfileButton /> */}
 
-        <div className="flex-col text-6xl px-14 max-w-2xl m-auto my-10">
+        <div className="flex-col text-6xl px-14 max-w-2xl m-auto mb-10 mt-24">
           <p className="font-crimson">wedding inspiration</p>
           <p className="font-crimson italic text-right text-primary">made by brides</p>
         </div>
         <div className="flex-col p-5">
-          <p className="font-crimson text-xl text-primary">Discover brides</p>
-          <div className="flex gap-1.5">
+          <p className="font-crimson text-3xl text-primary">Discover brides</p>
+          <div className="flex gap-1.5 mt-1.5 sticky top-0">
             {
               ["All", "Wedding", "Engagement", "Honeymoon", "Bridal Shower", "Bachelor"].map((item, index) => (
-                <p key={index} className="px-2 py-0.5 text-sm border rounded-full">{item}</p>
+                <p key={index} className="px-3 py-1.5 text-sm border rounded-full whitespace-nowrap">{item}</p>
               ))
             }
           </div>

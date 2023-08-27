@@ -40,7 +40,7 @@ export function UserRegisterForm({ className, ...props }: UserRegisterFormProps)
       if (res.status === 404) {
         // redirect to set password page
         currentURL.set('email', email)
-        router.push(`/auth/register?${currentURL.toString()}`)
+        router.push(`/register?${currentURL.toString()}`)
       } else {
         setError('Email already in use. Please login or use a different email address.')
       }
@@ -98,7 +98,7 @@ export function UserRegisterForm({ className, ...props }: UserRegisterFormProps)
           </span>
         </div>
       </div>
-      <div className="flex-col gap-2">
+      <div className="flex flex-col gap-2">
         <Button variant="outline" type="button" disabled={isLoading} onClick={() => signIn('facebook', { callbackUrl: '/' })}>
             {isLoading ? (
             <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
